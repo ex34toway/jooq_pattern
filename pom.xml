@@ -69,17 +69,17 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq</artifactId>
-            <version>3.6.4</version>
+            <version>3.8.4</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-meta</artifactId>
-            <version>3.6.4</version>
+            <version>3.8.4</version>
         </dependency>
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jooq-codegen</artifactId>
-            <version>3.6.4</version>
+            <version>3.8.4</version>
         </dependency>
 
         <!-- joda-time -->
@@ -109,11 +109,18 @@
 			<artifactId>fastjson</artifactId>
 			<version>${fastjson.version}</version>
 		</dependency>
-
+        <!-- dozer mapper -->
         <dependency>
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer</artifactId>
             <version>${dozer.version}</version>
+        </dependency>
+
+        <!-- commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
         </dependency>
 
 
@@ -131,28 +138,9 @@
         <dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
-			<version>2.4.4</version>
+			<version>2.4.7</version>
 		</dependency>
-        <dependency>
-            <groupId>net.sf.dozer</groupId>
-            <artifactId>dozer</artifactId>
-            <version>5.5.1</version>
-        </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <name>local private nexus</name>
-            <url>http://192.168.34.211:8081/content/repositories/central/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
 	<build>
 		<plugins>
@@ -164,7 +152,7 @@
                 <!-- Specify the maven code generator plugin -->
                 <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
-                <version>3.3.2</version>
+                <version>3.8.4</version>
 
                 <!-- The plugin should hook into the generate goal -->
                 <executions>
@@ -209,10 +197,12 @@
                             <deprecated>false</deprecated>
                             <instanceFields>true</instanceFields>
                             <pojos>true</pojos>
+                            <daos>true</daos>
+                            <springAnnotations>true</springAnnotations>
                             <globalObjectReferences>true</globalObjectReferences>
                         </generate>
                         <target>
-                            <packageName>com.nanhu.model.story</packageName>
+                            <packageName>com.nanhu.model.sys</packageName>
                             <directory>src/main/java</directory>
                         </target>
                     </generator>
